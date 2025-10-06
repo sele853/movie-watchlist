@@ -1,34 +1,39 @@
-import React, { useContext, useState } from "react";
-import { toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import { AuthContext } from "../contexts/AuthContext";
+import { useState, useContext } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { AuthContext } from '../contexts/AuthContext';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
-const Login = () => {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const {login} = useContext(AuthContext);
+
+function Login() {
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const { login } = useContext(AuthContext);
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await login(email,password);
-      toast.success("Logged successfully!");
-
-      setEmail("");
-      setPassword("");
+      await login(email, password);
+      navigate('/'); // Redirect immediately
+      toast.success('Logged in successfully!'); // Toast shows on home page
     } catch (error) {
-      toast.success(error);
+      toast.error(error);
     }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100 dark:bg-gray-900 px-4 sm:px-6 lg:px-8">
-      <div className="bg-white rounded-lg shadow-lg w-full max-w-md sm:max-w-lg dark:bg-gray-800 p-6 sm:p-8">
+      <div className="w-full max-w-md sm:max-w-lg bg-white dark:bg-gray-800 p-6 sm:p-8 rounded-lg shadow-lg">
         <h2 className="text-2xl sm:text-3xl font-bold text-center text-blue-600 dark:text-blue-400 mb-6">
           Login
         </h2>
         <form onSubmit={handleSubmit}>
           <div className="mb-4">
-            <label className="block text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-2" htmlFor="email">
+            <label
+              className="block text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-2"
+              htmlFor="email"
+            >
               Email
             </label>
             <input
@@ -41,7 +46,10 @@ const Login = () => {
             />
           </div>
           <div className="mb-6">
-            <label className="block text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-2" htmlFor="password">
+            <label
+              className="block text-gray-700 dark:text-gray-300 text-sm sm:text-base mb-2"
+              htmlFor="password"
+            >
               Password
             </label>
             <input
@@ -63,6 +71,6 @@ const Login = () => {
       </div>
     </div>
   );
-};
+}
 
 export default Login;
