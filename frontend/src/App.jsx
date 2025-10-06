@@ -6,6 +6,7 @@ import "react-toastify/dist/ReactToastify.css";
 import Login from "./pages/Login.jsx";
 import Register from "./pages/Register.jsx";
 import Navbar from "./components/Navbar.jsx";
+import Home from "./pages/Home.jsx";
 
 const App = () => {
   return (
@@ -16,18 +17,9 @@ const App = () => {
             <Navbar />
             <main className="flex-grow">
               <Routes>
+                <Route path="/" element={<Home />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route
-                  path="/"
-                  element={
-                    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-                      <h1 className="text-3xl font-bold text-blue-600">
-                        Welcome to Movie Watchlist
-                      </h1>
-                    </div>
-                  }
-                />
               </Routes>
             </main>
             <ToastContainer />
