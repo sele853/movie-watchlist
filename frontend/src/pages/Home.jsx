@@ -71,7 +71,7 @@ function Home() {
             />
             <button
               type="submit"
-              className="bg-blue-500 text-white px-4 py-3 rounded text-sm sm:text-base hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors"
+              className="bg-blue-500 text-white px-4 py-3 rounded text-sm sm:text-base hover:bg-blue-600 dark:hover:bg-blue-700 transition-colors cursor-pointer"
             >
               Search
             </button>
@@ -98,7 +98,7 @@ function Home() {
                 </p>
                 <button
                   onClick={() => handleAddMovie(movie)}
-                  className="mt-4 bg-green-500 text-white px-3 py-2 rounded text-sm sm:text-base hover:bg-green-600 dark:hover:bg-green-700 transition-colors w-full"
+                  className="mt-4 bg-green-500 text-white px-3 py-2 rounded text-sm sm:text-base hover:bg-green-600 dark:hover:bg-green-700 transition-colors w-full cursor-pointer"
                 >
                   Add to Watchlist
                 </button>
@@ -107,7 +107,7 @@ function Home() {
           ))}
         </div>
         {movies.length > 0 && (
-          <div className="flex justify-center gap-4 mt-8">
+          <div className="flex justify-center items-center gap-4 mt-8">
             <button
               onClick={() => handlePageChange(page - 1)}
               disabled={page === 1}

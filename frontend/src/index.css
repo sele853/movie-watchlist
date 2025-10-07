@@ -1,1 +1,11 @@
 @import "tailwindcss";
+
+/* Custom variant for class-based dark mode (overrides default media query) */
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* Global styles (optional, for base theme) */
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  background-color: #f3f4f6; /* Light default */
+}
